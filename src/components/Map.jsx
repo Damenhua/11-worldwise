@@ -1,6 +1,20 @@
+import L from "leaflet";
+import icon from "leaflet/dist/images/marker-icon.png";
+import iconShadow from "leaflet/dist/images/marker-shadow.png";
+
+let DefaultIcon = L.icon({
+  iconUrl: icon,
+  shadowUrl: iconShadow,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [2, -40],
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
+
 import styles from "./Map.module.css";
 
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   MapContainer,
   TileLayer,
@@ -10,8 +24,6 @@ import {
   useMapEvent,
 } from "react-leaflet";
 import { useEffect, useState } from "react";
-
-import "leaflet/dist/leaflet.css";
 
 import { useCities } from "../context/CitiesContext";
 import { useGeolocation } from "../hook/useGeolocation";
