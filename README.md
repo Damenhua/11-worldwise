@@ -22,8 +22,3 @@ WorldWise 是一個互動式旅行記錄應用程序，允許用戶在世界地�
 - Leaflet 地圖庫
 - CSS Modules
 - Vite 構建工具
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
