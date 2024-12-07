@@ -14,7 +14,7 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 import styles from "./Map.module.css";
 
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   MapContainer,
   TileLayer,

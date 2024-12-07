@@ -3,7 +3,6 @@ import { lazy, Suspense } from "react";
 
 import { FakeAuthProvider } from "./context/FakeAuthContext";
 import { CitiesProvider } from "./context/CitiesContext";
-import ProtectedRoute from "./pages/ProtectedRoute";
 
 // import Homepage from "./pages/Homepage";
 // import Login from "./pages/Login";
@@ -11,6 +10,7 @@ import ProtectedRoute from "./pages/ProtectedRoute";
 // import Product from "./pages/Product";
 // import PageNotFound from "./pages/PageNotFound";
 // import AppLayout from "./pages/AppLayout";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 const Homepage = lazy(() => import("./pages/Homepage"));
 const Login = lazy(() => import("./pages/Login"));

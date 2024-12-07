@@ -54,7 +54,7 @@ function reducer(state, action) {
 }
 
 function CitiesProvider({ children }) {
-  const [{ cities, loading, currentCity }, dispatch] = useReducer(
+  const [{ cities, loading, currentCity, error }, dispatch] = useReducer(
     reducer,
     initialState
   );
@@ -150,6 +150,7 @@ function CitiesProvider({ children }) {
         loading,
         currentCity,
         getCity,
+        error,
         createCity,
         deleteCity,
       }}
