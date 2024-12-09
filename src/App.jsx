@@ -1,15 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
-import { FakeAuthProvider } from "./context/FakeAuthContext";
+import { AuthProvider } from "./context/AuthContext";
 import { CitiesProvider } from "./context/CitiesContext";
 
-// import Homepage from "./pages/Homepage";
-// import Login from "./pages/Login";
-// import Pricing from "./pages/Pricing";
-// import Product from "./pages/Product";
-// import PageNotFound from "./pages/PageNotFound";
-// import AppLayout from "./pages/AppLayout";
 import ProtectedRoute from "./pages/ProtectedRoute";
 
 const Homepage = lazy(() => import("./pages/Homepage"));
@@ -29,7 +23,7 @@ import SpinnerFullPage from "./components/SpinnerFullPage";
 function App() {
   return (
     <CitiesProvider>
-      <FakeAuthProvider>
+      <AuthProvider>
         <BrowserRouter>
           <Suspense fallback={<SpinnerFullPage />}>
             <Routes>
@@ -58,7 +52,7 @@ function App() {
             </Routes>
           </Suspense>
         </BrowserRouter>
-      </FakeAuthProvider>
+      </AuthProvider>
     </CitiesProvider>
   );
 }

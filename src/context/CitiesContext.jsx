@@ -6,8 +6,8 @@ import {
   useCallback,
 } from "react";
 
-const BASE_URL = "/.netlify/functions/cities";
-// const BASE_URL = "http://localhost:9000";
+// const BASE_URL = "/.netlify/functions/cities";
+const BASE_URL = "http://localhost:9000";
 
 const CitiesContext = createContext();
 
@@ -58,10 +58,6 @@ function CitiesProvider({ children }) {
     reducer,
     initialState
   );
-
-  // const [cities, setCities] = useState([]);
-  // const [loading, setLoading] = useState(false);
-  // const [currentCity, setCurrentCity] = useState({});
 
   useEffect(() => {
     async function fetchCities() {
