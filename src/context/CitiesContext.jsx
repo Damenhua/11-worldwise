@@ -63,7 +63,7 @@ function CitiesProvider({ children }) {
     async function fetchCities() {
       dispatch({ type: "loading" });
       try {
-        const res = await fetch(`${BASE_URL}/cities`);
+        const res = await fetch(`${BASE_URL}`);
         if (!res.ok) throw new Error("Failed to fetch cities");
 
         const data = await res.json();
@@ -85,7 +85,7 @@ function CitiesProvider({ children }) {
       dispatch({ type: "loading" });
 
       try {
-        const res = await fetch(`${BASE_URL}/cities/${id}`);
+        const res = await fetch(`${BASE_URL}/${id}`);
         if (!res.ok) throw new Error(`City with id ${id} not found`);
 
         const data = await res.json();
@@ -104,7 +104,7 @@ function CitiesProvider({ children }) {
     dispatch({ type: "loading" });
 
     try {
-      const res = await fetch(`${BASE_URL}/cities/`, {
+      const res = await fetch(`${BASE_URL}`, {
         method: "POST",
         body: JSON.stringify(newCity),
         headers: {
@@ -126,7 +126,7 @@ function CitiesProvider({ children }) {
     dispatch({ type: "loading" });
 
     try {
-      await fetch(`${BASE_URL}/cities/${id}`, {
+      await fetch(`${BASE_URL}/${id}`, {
         method: "DELETE",
       });
 
