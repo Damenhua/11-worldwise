@@ -5,16 +5,22 @@ import { jwtDecode } from "jwt-decode";
 const AuthContext = createContext();
 
 const initialState = {
-  user: null,
-  isAuthenticated: false,
+  user: JSON.parse(localStorage.getItem("user")) || null,
+  isAuthenticated: localStorage.getItem("isAuthenticated") === "true",
 };
 
 function reducer(state, action) {
   switch (action.type) {
     case "login":
+      localStorage.setItem("user", JSON.stringify(action.payload));
+      localStorage.setItem("isAuthenticated", "true");
       return { ...state, user: action.payload, isAuthenticated: true };
+
     case "logout":
+      localStorage.removeItem("user");
+      localStorage.removeItem("isAuthenticated");
       return { ...state, user: null, isAuthenticated: false };
+
     default:
       throw new Error("Unknown action");
   }
@@ -30,6 +36,7 @@ function AuthProvider({ children }) {
 
   const login = useCallback(async (credentialResponse) => {
     const decoded = jwtDecode(credentialResponse.credential);
+    console.log(decoded);
     dispatch({ type: "login", payload: decoded });
   }, []);
 

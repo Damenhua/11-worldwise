@@ -6,8 +6,9 @@ import {
   useCallback,
 } from "react";
 
-const BASE_URL = "/.netlify/functions/cities";
-// const BASE_URL = "http://localhost:9000";
+const BASE_URL = import.meta.env.DEV
+  ? "http://localhost:9000/cities" // 本地開發
+  : "/.netlify/functions/cities"; // 生產環境
 
 const CitiesContext = createContext();
 
