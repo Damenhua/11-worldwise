@@ -13,7 +13,7 @@ const BASE_URL = import.meta.env.DEV
 const CitiesContext = createContext();
 
 const initialState = {
-  cities: [],
+  cities: JSON.parse(localStorage.getItem("cities")) || [],
   loading: false,
   currentCity: {},
   error: "",
@@ -25,26 +25,37 @@ function reducer(state, action) {
       return { ...state, loading: true };
 
     case "cities/loaded":
+      localStorage.setItem("cities", JSON.stringify(action.payload));
+
       return { ...state, loading: false, cities: action.payload };
 
     case "currentCity/loaded":
       return { ...state, loading: false, currentCity: action.payload };
 
-    case "city/created":
+    case "city/created": {
+      const newCities = [...state.cities, action.payload];
+      localStorage.setItem("cities", JSON.stringify(newCities));
       return {
         ...state,
         loading: false,
-        cities: [...state.cities, action.payload],
+        cities: newCities,
         currentCity: action.payload,
       };
+    }
 
-    case "city/deleted":
+    case "city/deleted": {
+      const filteredCities = state.cities.filter(
+        (city) => city.id !== action.payload
+      );
+      localStorage.setItem("cities", JSON.stringify(filteredCities));
+
       return {
         ...state,
         loading: false,
-        cities: state.cities.filter((city) => city.id !== action.payload),
+        cities: filteredCities,
         currentCity: {},
       };
+    }
 
     case "rejected":
       return { ...state, loading: false, error: action.payload };
