@@ -36,7 +36,6 @@ function AuthProvider({ children }) {
 
   const login = useCallback(async (credentialResponse) => {
     const decoded = jwtDecode(credentialResponse.credential);
-    console.log(decoded);
     dispatch({ type: "login", payload: decoded });
   }, []);
 
